@@ -1,0 +1,323 @@
+CREATE DATABASE AtividadeAula2
+GO
+USE AtividadeAula2
+
+CREATE TABLE curso (
+codigo_curso	INT			NOT NULL,
+nome			VARCHAR(70)	NOT NULL,
+sigla			VARCHAR(10)	NOT NULL
+PRIMARY KEY(codigo_curso)
+)
+
+CREATE TABLE aluno (
+ra				char(7)			NOT NULL,
+nome			VARCHAR(250)	NOT NULL,
+codigo_curso	INT				NOT NULL
+PRIMARY KEY(ra)
+FOREIGN KEY(codigo_curso) REFERENCES curso(codigo_curso)
+)
+
+CREATE TABLE palestrante(
+codigo_palestrante	INT				NOT NULL,
+nome				VARCHAR(250)	NOT NULL,
+empresa				VARCHAR(100)	NOT NULL
+PRIMARY KEY(codigo_palestrante)
+)
+
+CREATE TABLE palestra(
+codigo_palestra		INT				NOT NULL,
+titulo				VARCHAR(MAX)	NOT NULL,
+carga_horaria		INT				NOT NULL,
+data				DATETIME		NOT NULL,
+codigo_palestrante	INT				NOT NULL
+PRIMARY KEY(codigo_palestra)
+FOREIGN KEY(codigo_palestrante) REFERENCES palestrante(codigo_palestrante)
+)
+
+CREATE TABLE nao_aluno(
+rg			VARCHAR(9)		NOT NULL,
+orgao_exp	VARCHAR(5)		NOT NULL,
+nome		VARCHAR(250)	NOT NULL
+PRIMARY KEY(rg, orgao_exp)
+)
+
+CREATE TABLE alunos_inscritos(
+ra				CHAR(7) NOT NULL,
+codigo_palestra	INT		NOT NULL
+PRIMARY KEY(ra, codigo_palestra)
+FOREIGN KEY(ra) REFERENCES aluno(ra),
+FOREIGN KEY(codigo_palestra) REFERENCES palestra(codigo_palestra)
+)
+
+CREATE TABLE nao_alunos_inscritos(
+rg				VARCHAR(9)	NOT NULL,
+orgao_exp		VARCHAR(5)	NOT NULL,
+codigo_palestra	INT			NOT NULL
+PRIMARY KEY(rg, orgao_exp, codigo_palestra)
+FOREIGN KEY(codigo_palestra) REFERENCES palestra(codigo_palestra),
+FOREIGN KEY(rg, orgao_exp) REFERENCES nao_aluno(rg, orgao_exp)
+)
+
+INSERT INTO curso (codigo_curso, nome, sigla) VALUES
+(2, 'Arquitetura e Urbanismo', 'ARQ'),
+(3, 'Agronomia', 'AGR'),
+(4, 'Análise e Desenvolvimento de Sistemas', 'ADS'),
+(5, 'Artes Visuais', 'AV'),
+(6, 'Biomedicina', 'BIO'),
+(7, 'Ciência da Computação', 'CC'),
+(8, 'Ciências Contábeis', 'CONT'),
+(9, 'Ciências Econômicas', 'ECO'),
+(10, 'Ciências Biológicas', 'CB'),
+(11, 'Ciências Sociais', 'CS'),
+(12, 'Comunicação Social', 'COM'),
+(13, 'Design Gráfico', 'DG'),
+(14, 'Direito', 'DIR'),
+(15, 'Educação Física', 'EF'),
+(16, 'Enfermagem', 'ENF'),
+(17, 'Engenharia Civil', 'EC'),
+(18, 'Engenharia Elétrica', 'EE'),
+(19, 'Engenharia Mecânica', 'EM'),
+(20, 'Engenharia de Produção', 'EP'),
+(21, 'Engenharia Química', 'EQ'),
+(22, 'Engenharia de Software', 'ES'),
+(23, 'Estatística', 'EST'),
+(24, 'Farmácia', 'FAR'),
+(25, 'Filosofia', 'FIL'),
+(26, 'Física', 'FIS'),
+(27, 'Fisioterapia', 'FISIO'),
+(28, 'Gastronomia', 'GAST'),
+(29, 'Geografia', 'GEO'),
+(30, 'Geologia', 'GEOL'),
+(31, 'Gestão Ambiental', 'GA'),
+(32, 'Gestão Comercial', 'GC'),
+(33, 'Gestão de Recursos Humanos', 'GRH'),
+(34, 'Gestão Financeira', 'GF'),
+(35, 'História', 'HIS'),
+(36, 'Jornalismo', 'JOR'),
+(37, 'Letras', 'LET'),
+(38, 'Logística', 'LOG'),
+(39, 'Marketing', 'MKT'),
+(40, 'Matemática', 'MAT'),
+(41, 'Medicina', 'MED'),
+(42, 'Medicina Veterinária', 'MV'),
+(43, 'Música', 'MUS'),
+(44, 'Nutrição', 'NUT'),
+(45, 'Odontologia', 'ODON'),
+(46, 'Pedagogia', 'PED'),
+(47, 'Psicologia', 'PSI'),
+(48, 'Publicidade e Propaganda', 'PP'),
+(49, 'Química', 'QUI'),
+(50, 'Relações Internacionais', 'RI'),
+(51, 'Relações Públicas', 'RP'),
+(52, 'Redes de Computadores', 'RC'),
+(53, 'Secretariado Executivo', 'SE'),
+(54, 'Segurança da Informação', 'SI'),
+(55, 'Serviço Social', 'SS'),
+(56, 'Sistemas de Informação', 'SIINF'),
+(57, 'Sociologia', 'SOC'),
+(58, 'Tecnologia da Informação', 'TI'),
+(59, 'Teologia', 'TEO'),
+(60, 'Terapia Ocupacional', 'TO'),
+(61, 'Turismo', 'TUR'),
+(62, 'Zootecnia', 'ZOO'),
+(63, 'Engenharia Ambiental', 'EAMB'),
+(64, 'Engenharia de Controle e Automação', 'ECA'),
+(65, 'Engenharia de Materiais', 'EMAT'),
+(66, 'Engenharia de Minas', 'EMIN'),
+(67, 'Engenharia Naval', 'ENAV'),
+(68, 'Engenharia de Petróleo', 'EPET'),
+(69, 'Engenharia de Telecomunicações', 'ETEL'),
+(70, 'Engenharia Têxtil', 'ETEX'),
+(71, 'Engenharia Biomédica', 'EBIO'),
+(72, 'Engenharia de Transportes', 'ETRA'),
+(73, 'Engenharia Aeroespacial', 'EAER'),
+(74, 'Engenharia Mecatrônica', 'EMEC'),
+(75, 'Engenharia de Energia', 'EENE'),
+(76, 'Engenharia Física', 'EFIS'),
+(77, 'Engenharia Florestal', 'EFLOR'),
+(78, 'Engenharia Cartográfica', 'ECART'),
+(79, 'Engenharia Sanitária', 'ESAN'),
+(80, 'Engenharia de Segurança do Trabalho', 'ESTR'),
+(81, 'Engenharia de Alimentos', 'EALI'),
+(82, 'Engenharia Agrícola', 'EAGR'),
+(83, 'Engenharia de Computação', 'ECOMP'),
+(84, 'Engenharia de Pesca', 'EPES'),
+(85, 'Engenharia de Produção Civil', 'EPC'),
+(86, 'Engenharia de Sistemas', 'ESIS'),
+(87, 'Engenharia de Instrumentação', 'EINS'),
+(88, 'Engenharia de Manufatura', 'EMAN'),
+(89, 'Engenharia de Mobilidade', 'EMOB'),
+(90, 'Engenharia de Robótica', 'EROB'),
+(91, 'Engenharia de Software Industrial', 'ESI'),
+(92, 'Engenharia de Transportes Urbanos', 'ETU'),
+(93, 'Engenharia de Infraestrutura', 'EINF'),
+(94, 'Engenharia de Dados', 'EDAD'),
+(95, 'Engenharia de Inteligência Artificial', 'EIA'),
+(96, 'Engenharia de Computação Quântica', 'ECQ'),
+(97, 'Engenharia de Sistemas Ciberfísicos', 'ESCF'),
+(98, 'Engenharia de Sistemas Embarcados', 'ESE'),
+(99, 'Engenharia de Sistemas de Energia', 'ESEE'),
+(100, 'Engenharia de Sistemas de Comunicação', 'ESCO');
+
+INSERT INTO aluno (ra, nome, codigo_curso) VALUES
+('0000001', 'Ana Beatriz Oliveira', 1),
+('0000002', 'Bruno Costa Silva', 7),
+('0000003', 'Camila Fernandes Rocha', 14),
+('0000004', 'Daniel Souza Lima', 4),
+('0000005', 'Eduarda Martins Ribeiro', 47),
+('0000006', 'Felipe Almeida Santos', 8),
+('0000007', 'Gabriela Torres Mendes', 41),
+('0000008', 'Henrique Carvalho Pinto', 20),
+('0000009', 'Isabela Duarte Nunes', 24),
+('0000010', 'João Pedro Araújo', 2),
+('0000011', 'Karina Lopes Teixeira', 46),
+('0000012', 'Lucas Henrique Barros', 33),
+('0000013', 'Mariana Castro Lima', 15),
+('0000014', 'Natália Freitas Gomes', 44),
+('0000015', 'Otávio Ramos Cunha', 9),
+('0000016', 'Patrícia Lima Figueiredo', 13),
+('0000017', 'Rafael Monteiro Braga', 19),
+('0000018', 'Sabrina Oliveira Costa', 6),
+('0000019', 'Thiago Fernandes Leal', 52),
+('0000020', 'Vanessa Souza Martins', 56),
+('5938271', 'Ana Clara Monteiro', 1),
+('1849302', 'Bruno Henrique Souza', 7),
+('9283746', 'Camila Ribeiro Lima', 14),
+('3748293', 'Daniel Costa Martins', 4),
+('8473629', 'Eduarda Fernandes Rocha', 47),
+('2938475', 'Felipe Almeida Santos', 8),
+('7483920', 'Gabriela Torres Mendes', 41),
+('3847562', 'Henrique Carvalho Pinto', 20),
+('9283741', 'Isabela Duarte Nunes', 24),
+('8374659', 'João Pedro Araújo', 2),
+('3849201', 'Karina Lopes Teixeira', 46),
+('9283742', 'Lucas Henrique Barros', 33),
+('8374651', 'Mariana Castro Lima', 15),
+('3849202', 'Natália Freitas Gomes', 44),
+('9283743', 'Otávio Ramos Cunha', 9),
+('8374652', 'Patrícia Lima Figueiredo', 13),
+('3849203', 'Rafael Monteiro Braga', 19),
+('9283744', 'Sabrina Oliveira Costa', 6),
+('8374653', 'Thiago Fernandes Leal', 52),
+('3849204', 'Vanessa Souza Martins', 56),
+('9283745', 'Wesley Andrade Cunha', 3),
+('8374654', 'Yasmin Ferreira Lopes', 10),
+('3849205', 'Zeca Barreto Lima', 5),
+('9283747', 'Amanda Nogueira Silva', 11),
+('8374655', 'Bernardo Tavares Rocha', 12),
+('3849206', 'Carla Mendes Oliveira', 16),
+('9283748', 'Diego Farias Costa', 17),
+('8374656', 'Elisa Martins Duarte', 18),
+('3849207', 'Fernando Lima Teixeira', 21),
+('9283749', 'Giovana Souza Ribeiro', 22),
+('8374657', 'Hugo Carvalho Monteiro', 23),
+('3849208', 'Ingrid Rocha Fernandes', 25),
+('9283750', 'Juliana Castro Lima', 26),
+('8374658', 'Kleber Santos Nunes', 27),
+('3849209', 'Larissa Duarte Costa', 28),
+('9283751', 'Marcelo Oliveira Pinto', 29),
+('8374650', 'Nicole Freitas Mendes', 30),
+('3849210', 'Oscar Lima Ribeiro', 31),
+('9283752', 'Paula Martins Souza', 32),
+('8374661', 'Renato Costa Lima', 34),
+('3849211', 'Simone Duarte Rocha', 35),
+('9283753', 'Tatiane Oliveira Mendes', 36),
+('8374662', 'Ubirajara Lima Teixeira', 37),
+('3849212', 'Valéria Castro Nunes', 38),
+('9283754', 'William Santos Costa', 39),
+('8374663', 'Xuxa Lima Oliveira', 40),
+('3849213', 'Yuri Monteiro Ribeiro', 42),
+('9283755', 'Zuleika Duarte Lima', 43),
+('8374664', 'Adriana Costa Pinto', 45),
+('3849214', 'Beto Lima Teixeira', 48),
+('9283756', 'Cecília Castro Mendes', 49),
+('8374665', 'Davi Oliveira Rocha', 50),
+('3849215', 'Estela Duarte Nunes', 51),
+('9283757', 'Fabrício Lima Costa', 53),
+('8374666', 'Gisele Martins Pinto', 54),
+('3849216', 'Heitor Souza Ribeiro', 55),
+('9283758', 'Iara Carvalho Lima', 57),
+('8374667', 'Jonas Duarte Teixeira', 58),
+('3849217', 'Kelly Castro Oliveira', 59),
+('9283759', 'Leandro Lima Costa', 60),
+('8374668', 'Mirela Souza Mendes', 61),
+('3849218', 'Natan Carvalho Pinto', 62),
+('9283760', 'Olívia Duarte Lima', 63),
+('8374669', 'Pedro Martins Teixeira', 64),
+('3849219', 'Quezia Lima Costa', 65),
+('9283761', 'Rodrigo Castro Mendes', 66),
+('8374670', 'Sueli Oliveira Pinto', 67),
+('3849220', 'Tales Duarte Lima', 68),
+('9283762', 'Ursula Lima Costa', 69),
+('8374671', 'Vicente Martins Teixeira', 70),
+('3849221', 'Wanda Castro Mendes', 71),
+('9283763', 'Ximena Oliveira Pinto', 72),
+('8374672', 'Yago Duarte Lima', 73),
+('3849222', 'Zilda Lima Costa', 74),
+('9283764', 'Alana Martins Teixeira', 75),
+('8374673', 'Bruna Castro Mendes', 76),
+('3849223', 'Caio Oliveira Pinto', 77),
+('9283765', 'Débora Duarte Lima', 78),
+('8374674', 'Emanuel Lima Costa', 79),
+('3849224', 'Fabiana Martins Teixeira', 80);
+
+INSERT INTO palestrante (codigo_palestrante, nome, empresa) VALUES
+(1, 'Fernanda Ribeiro', 'TechNova Solutions'),
+(2, 'Carlos Eduardo Lima', 'InovaCorp'),
+(3, 'Juliana Martins', 'GlobalMind'),
+(4, 'Rafael Souza', 'BrightFuture Inc.'),
+(5, 'Amanda Costa', 'NextGen Systems');
+
+INSERT INTO palestra (codigo_palestra, titulo, carga_horaria, data, codigo_palestrante) VALUES
+(200, 'Palestra sobre Tema 1', 3, '2025-09-01', 1),
+(201, 'Palestra sobre Tema 2', 1, '2025-09-02', 2),
+(202, 'Palestra sobre Tema 3', 4, '2025-09-03', 3),
+(203, 'Palestra sobre Tema 4', 2, '2025-09-04', 4),
+(204, 'Palestra sobre Tema 5', 1, '2025-09-05', 5),
+(205, 'Palestra sobre Tema 6', 2, '2025-09-06', 1),
+(206, 'Palestra sobre Tema 7', 3, '2025-09-07', 2),
+(207, 'Palestra sobre Tema 8', 4, '2025-09-08', 3),
+(208, 'Palestra sobre Tema 9', 1, '2025-09-09', 4),
+(209, 'Palestra sobre Tema 10', 2, '2025-09-10', 5);
+
+INSERT INTO nao_aluno (rg, orgao_exp, nome) VALUES
+('189374620', 'SSPSP', 'Carlos Santos'),
+('374829105', 'SSPRJ', 'Juliana Costa'),
+('928374615', 'SSPMG', 'Lucas Rodrigues'),
+('384920176', 'SSPRS', 'Ana Lima'),
+('837465902', 'SSPBA', 'Pedro Almeida'),
+('928374612', 'SSPPR', 'Maria Souza'),
+('384920178', 'SSPPE', 'Fernanda Silva'),
+('837465903', 'SSPCE', 'João Ferreira'),
+('928374613', 'SSPGO', 'Patrícia Oliveira'),
+('384920179', 'SSPDF', 'Rafael Pereira'),
+('837465904', 'SSPSP', 'Carlos Lima'),
+('928374614', 'SSPRJ', 'Juliana Santos'),
+('384920180', 'SSPMG', 'Lucas Costa'),
+('837465905', 'SSPRS', 'Ana Rodrigues'),
+('928374616', 'SSPBA', 'Pedro Silva'),
+('384920181', 'SSPPR', 'Maria Almeida'),
+('837465906', 'SSPPE', 'Fernanda Souza'),
+('928374617', 'SSPCE', 'João Lima'),
+('384920182', 'SSPGO', 'Patrícia Ferreira'),
+('837465907', 'SSPDF', 'Rafael Oliveira');
+
+
+SELECT *
+FROM curso
+
+SELECT *
+FROM aluno
+
+SELECT *
+FROM palestrante
+
+SELECT *
+FROM palestra
+
+SELECT *
+FROM alunos_inscritos
+
+SELECT *
+FROM nao_alunos_inscritos
+
