@@ -1,0 +1,265 @@
+GO
+USE AtividadeAula2
+
+CREATE VIEW Lista_P200 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 200
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 200
+
+CREATE VIEW Lista_P201 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 201
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 201
+
+CREATE VIEW Lista_P202 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 202
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 202
+
+CREATE VIEW Lista_P203 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 203
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 203
+
+CREATE VIEW Lista_P204 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 204
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 204
+
+CREATE VIEW Lista_P205 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 205
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 205
+
+CREATE VIEW Lista_P206 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 206
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 206
+
+CREATE VIEW Lista_P207 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 207
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 207
+
+CREATE VIEW Lista_P208 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 208
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 208
+
+CREATE VIEW Lista_P209 AS
+SELECT a.ra AS Num_Documento, 
+	a.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM aluno AS a
+INNER JOIN alunos_inscritos AS ai	ON ai.ra = a.ra
+INNER JOIN palestra			AS pa	ON pa.codigo_palestra = ai.codigo_palestra
+INNER JOIN palestrante		AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 209
+UNION
+SELECT na.rg + '-' + na.orgao_exp AS Num_Documento,
+	na.nome AS Nome_Pessoa,
+	pa.titulo AS Titulo_Palestra,
+	pe.nome AS Nome_Palestrante,
+	pa.carga_horaria AS Carga_Horária,
+	pa.data AS Data
+FROM nao_aluno AS na
+INNER JOIN nao_alunos_inscritos AS nai	ON nai.rg = na.rg AND nai.orgao_exp = na.orgao_exp
+INNER JOIN palestra				AS pa	ON pa.codigo_palestra = nai.codigo_palestra
+INNER JOIN palestrante			AS pe	ON pe.codigo_palestrante = pa.codigo_palestrante
+WHERE pa.codigo_palestra = 209
+
+
+
+SELECT * FROM Lista_P200
+SELECT * FROM Lista_P201
+SELECT * FROM Lista_P202
+SELECT * FROM Lista_P203
+SELECT * FROM Lista_P204
+SELECT * FROM Lista_P205
+SELECT * FROM Lista_P206
+SELECT * FROM Lista_P207
+SELECT * FROM Lista_P208
+SELECT * FROM Lista_P209

@@ -1,0 +1,59 @@
+CREATE DATABASE AtividadeAula2
+GO
+USE AtividadeAula2
+
+CREATE TABLE curso (
+codigo_curso	INT			NOT NULL,
+nome			VARCHAR(70)	NOT NULL,
+sigla			VARCHAR(10)	NOT NULL
+PRIMARY KEY(codigo_curso)
+)
+
+CREATE TABLE aluno (
+ra				char(7)			NOT NULL,
+nome			VARCHAR(250)	NOT NULL,
+codigo_curso	INT				NOT NULL
+PRIMARY KEY(ra)
+FOREIGN KEY(codigo_curso) REFERENCES curso(codigo_curso)
+)
+
+CREATE TABLE palestrante(
+codigo_palestrante	INT				NOT NULL,
+nome				VARCHAR(250)	NOT NULL,
+empresa				VARCHAR(100)	NOT NULL
+PRIMARY KEY(codigo_palestrante)
+)
+
+CREATE TABLE palestra(
+codigo_palestra		INT				NOT NULL,
+titulo				VARCHAR(MAX)	NOT NULL,
+carga_horaria		INT				NOT NULL,
+data				DATETIME		NOT NULL,
+codigo_palestrante	INT				NOT NULL
+PRIMARY KEY(codigo_palestra)
+FOREIGN KEY(codigo_palestrante) REFERENCES palestrante(codigo_palestrante)
+)
+
+CREATE TABLE nao_aluno(
+rg			VARCHAR(9)		NOT NULL,
+orgao_exp	VARCHAR(5)		NOT NULL,
+nome		VARCHAR(250)	NOT NULL
+PRIMARY KEY(rg, orgao_exp)
+)
+
+CREATE TABLE alunos_inscritos(
+ra				CHAR(7) NOT NULL,
+codigo_palestra	INT		NOT NULL
+PRIMARY KEY(ra, codigo_palestra)
+FOREIGN KEY(ra) REFERENCES aluno(ra),
+FOREIGN KEY(codigo_palestra) REFERENCES palestra(codigo_palestra)
+)
+
+CREATE TABLE nao_alunos_inscritos(
+rg				VARCHAR(9)	NOT NULL,
+orgao_exp		VARCHAR(5)	NOT NULL,
+codigo_palestra	INT			NOT NULL
+PRIMARY KEY(rg, orgao_exp, codigo_palestra)
+FOREIGN KEY(codigo_palestra) REFERENCES palestra(codigo_palestra),
+FOREIGN KEY(rg, orgao_exp) REFERENCES nao_aluno(rg, orgao_exp)
+)
